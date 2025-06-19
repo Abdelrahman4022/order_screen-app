@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
 
-class OrderScreen extends StatelessWidget {
+class OrderScreen extends StatefulWidget {
+  const OrderScreen({super.key});
+
+  @override
+  State<OrderScreen> createState() => _OrderScreenState();
+}
+
+class _OrderScreenState extends State<OrderScreen> {
+  int quantity = 1;
+
+  @override
+  void setState(void Function() param0) {
+    super.setState(param0);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,12 +85,21 @@ class OrderScreen extends StatelessWidget {
                             221,
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            if (quantity > 1) {
+                              quantity--;
+                            }
+                          });
+                          if (quantity > 1) {
+                            quantity--;
+                          }
+                        },
                         icon: Icon(Icons.remove, color: Colors.black26),
                       ),
 
                       Text(
-                        '1',
+                        '$quantity',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 30,
@@ -92,7 +115,11 @@ class OrderScreen extends StatelessWidget {
                             5,
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            quantity++;
+                          });
+                        },
                         icon: Icon(Icons.add),
                       ),
                     ],
