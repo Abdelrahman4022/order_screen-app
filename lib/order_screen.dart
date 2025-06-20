@@ -9,6 +9,7 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   int quantity = 1;
+  int price = 183;
 
   @override
   void setState(void Function() param0) {
@@ -87,7 +88,7 @@ class _OrderScreenState extends State<OrderScreen> {
                         ),
                         onPressed: () {
                           setState(() {
-                            if (quantity > 1) {
+                            if (quantity > 0) {
                               quantity--;
                             }
                           });
@@ -155,7 +156,7 @@ class _OrderScreenState extends State<OrderScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          '183 EGP',
+                          '${price * quantity} EGP',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 30,
